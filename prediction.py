@@ -2,7 +2,7 @@ import pyn
 
 network = pyn.NN([2,2,1])
 
-network.load("XOR Gate/model.pyn")
+network.load("model.pyn")
 
 print("0,0")
 network.prediction([0,0])
