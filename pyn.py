@@ -9,6 +9,7 @@ class NN:
         self.output = []
         self.dataset = []
         self.nn = []
+        self.initialize_gradients()
 
     def load_dataset(self, dataset):
         self.dataset = dataset
@@ -21,6 +22,14 @@ class NN:
 
     def __cost(self, output, target):
         return np.sum((output - target) ** 2)
+
+    def initialize_gradients(self):
+        self.gradients = []
+        for i in range(len(self.layers) - 1):
+            self.gradients.append([
+                np.zeros((self.layers[i], self.layers[i + 1])), 
+                np.zeros(self.layers[i + 1])
+            ])
 
     def __update_values(self, learnRate):
         for index, (weights, biases) in enumerate(self.nn):
